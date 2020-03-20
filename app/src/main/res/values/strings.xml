@@ -2,7 +2,7 @@
     <string name="app_name">Hello</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-     <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
     <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next" translatable="false">Next</string>
     <string name="previous" translatable="false">Previous</string>
@@ -11,5 +11,10 @@
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="str">Happy Birthday!</string>
     <string name="from">your tom</string>
-    <string name="btn_label">Button</string>
+    <string name="btn_label" translatable="false">Button</string>
+    <string name="hint_txt" translatable="false">Input your name</string>
+    <string name="label_add1" translatable="false">+1 point</string>
+    <string name="label_add2" translatable="false">+2 points</string>
+    <string name="label_add3" translatable="false">+3 point</string>
+    <string name="btn_reset_label" translatable="false">Reset</string>
 </resources>
