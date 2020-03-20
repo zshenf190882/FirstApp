@@ -11,4 +11,5 @@
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="str">Happy Birthday!</string>
     <string name="from">your tom</string>
+    <string name="btn_label">Button</string>
 </resources>
