@@ -17,4 +17,12 @@
     <string name="label_add2" translatable="false">+2 points</string>
     <string name="label_add3" translatable="false">+3 point</string>
     <string name="btn_reset_label" translatable="false">Reset</string>
+    <string name="textView" translatable="false">温度转换器</string>
+    <string name="editText" translatable="false" />
+    <string name="hint_show" translatable="false">输入摄氏度</string>
+    <string name="button_1" translatable="false">转换为华氏温度</string>
+    <string name="textView2" translatable="false">华氏温度</string>
+    <string name="show" translatable="false">温度转换器</string>
+    <string name="hint_inp" translatable="false">请输入摄氏温度</string>
+    <string name="result" translatable="false"></string>
 </resources>

@@ -5,35 +5,48 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class sedActivity extends AppCompatActivity {
-    TextView score;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class sedActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView out;
+    EditText inp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sed);
+        out =(TextView)findViewById(R.id.textView);
+        inp=(EditText)findViewById(R.id.inpText);
+        Button btn =(Button)findViewById(R.id.btn1);
+        //btn.setOnClickListener(this);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str=inp.getText().toString();
+                float a =Float.parseFloat(str);
+                String result=String.valueOf((a*9/5)+32);
+                out.setText("华氏温度："+result);
+            }
+        });
+    }
 
-        score=(TextView) findViewById(R.id.score);
+    @Override
+    public void onClick(View v) {
+
+        String str=inp.getText().toString();
+        out.setText("Hello "+str);
     }
-    public void btnAdd1(View btn){
-        showScore(1);
-    }
-    public void btnAdd2(View btn){
-        showScore(2);
-    }
-    public void btnAdd3(View btn){
-        showScore(3);
-    }
-    public void btnReset(View btn){
-        score.setText("0");
-    }
-    private void showScore(int inc){
-        Log.i("show","inc="+inc);
-        String oldScore = (String) score.getText();
-        int newScore=Integer.parseInt(oldScore)+inc;
-        score.setText(""+newScore);
+    public void btnClick(View btn){
 
     }
 }
