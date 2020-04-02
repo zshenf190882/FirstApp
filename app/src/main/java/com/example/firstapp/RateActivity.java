@@ -72,7 +72,7 @@ public class RateActivity extends AppCompatActivity {
         Log.i(TAG, "openOne: dollarRate=" + dollarRate);
         Log.i(TAG, "openOne: euroRate=" + euroRate);
         Log.i(TAG, "openOne: wonRate=" + wonRate);
-
+//mm
         startActivityForResult(config, 1);
     }
 
