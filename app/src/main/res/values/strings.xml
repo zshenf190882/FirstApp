@@ -25,5 +25,9 @@
     <string name="show" translatable="false">温度转换器</string>
     <string name="hint_inp" translatable="false">请输入摄氏温度</string>
     <string name="result" translatable="false"></string>
-    <string name="teamName">teamName</string>
+    <string name="btn_dollar_label" translatable="false">Dollar</string>
+    <string name="btn_euro_label" translatable="false">Euro</string>
+    <string name="btn_won_label" translatable="false">Won</string>
+    <string name="rmb_hint" translatable="false">Input RMB</string>
+
 </resources>
