@@ -44,6 +44,7 @@ public class RateActivity extends AppCompatActivity {
 
         } public  void openOne(View btn){
             Log.i("open","openOne: ");
+            //地方
             Intent web= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.jd.com"));
             startActivity(web);
             Intent hello=new Intent(this,sedActivity.class);
