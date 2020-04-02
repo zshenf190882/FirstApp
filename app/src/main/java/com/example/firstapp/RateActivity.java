@@ -1,7 +1,6 @@
 package com.example.firstapp;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RateActivity extends AppCompatActivity {
     EditText rmb;
     TextView show;
+    private final String TAG="Rate";
+    private float dollarRate=0.1f;
+    private float euroRate=0.2f;
+    private float wonRate=0.3f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +31,38 @@ public class RateActivity extends AppCompatActivity {
         if(str.length()>0){
             r=Float.parseFloat(str);
         }else{
-            Toast.makeText(this,"请输入金额",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"请输入内容",Toast.LENGTH_SHORT);
         }
+        Log.i(TAG,"Onclick: r=" + r);
 //bnvb
+//            if(btn.getId()==R.id.btn_dollar){
+//                float val =r*(1/6.7f);
+//                show.setText(String.valueOf(val));
+//            }else if(btn.getId()==R.id.btn_euro){
+//                float val=r*(1/11.0f);
+//                show.setText(String.valueOf(val));
+//            }else{
+//                float val=r*500;
+//                show.setText(String.valueOf(val));
+//        }
         if(btn.getId()==R.id.btn_dollar){
-            float val =r*(1/6.7f);
-            show.setText(String.valueOf(val));
+            show.setText(String.format("%.2f",r*dollarRate));
         }else if(btn.getId()==R.id.btn_euro){
-            float val=r*(1/11.0f);
-            show.setText(String.valueOf(val));
-        }else{
-            float val=r*500;
-            show.setText(String.valueOf(val));
-        }
+            show.setText(String.format("%.2f",r*euroRate));
+        }else
+            show.setText(String.format("%.2f",r*wonRate));}
 
-        } public  void openOne(View btn){
-            Log.i("open","openOne: ");
-            //地方
-            Intent web= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.jd.com"));
-            startActivity(web);
-            Intent hello=new Intent(this,sedActivity.class);
-            Intent intent=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:87092173"));
-        startActivity(intent);
+
+
+    public  void openOne(View btn){
+            Intent config=new Intent(this,ConfigActivity.class);
+           config.putExtra("dollar_rate_key",dollarRate);
+        config.putExtra("euro_rate_key",euroRate);
+        config.putExtra("won_rate_key",wonRate);
+        Log.i(TAG,"openOne: dollarRate"+ dollarRate);
+        Log.i(TAG,"openOne: euroRate"+ euroRate);
+        Log.i(TAG,"openOne: wonRate"+ wonRate);
+            startActivity(config);
 
     }
 }
