@@ -46,6 +46,6 @@
         android:id="@+id/btn_won"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="OnClick"
+        android:onClick="openOne"
         android:text="@string/btn_won_label" />
 </LinearLayout>

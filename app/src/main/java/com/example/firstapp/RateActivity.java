@@ -1,6 +1,9 @@
 package com.example.firstapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +30,7 @@ public class RateActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this,"请输入金额",Toast.LENGTH_SHORT).show();
         }
-
+//bnvb
         if(btn.getId()==R.id.btn_dollar){
             float val =r*(1/6.7f);
             show.setText(String.valueOf(val));
@@ -38,5 +41,14 @@ public class RateActivity extends AppCompatActivity {
             float val=r*500;
             show.setText(String.valueOf(val));
         }
+
+        } public  void openOne(View btn){
+            Log.i("open","openOne: ");
+            Intent web= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.jd.com"));
+            startActivity(web);
+            Intent hello=new Intent(this,sedActivity.class);
+            Intent intent=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:87092173"));
+        startActivity(intent);
+
     }
 }
