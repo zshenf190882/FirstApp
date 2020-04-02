@@ -25,4 +25,5 @@
     <string name="show" translatable="false">温度转换器</string>
     <string name="hint_inp" translatable="false">请输入摄氏温度</string>
     <string name="result" translatable="false"></string>
+    <string name="teamName">teamName</string>
 </resources>
