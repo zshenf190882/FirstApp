@@ -31,7 +31,7 @@ public class RateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rate);
         rmb =(EditText) findViewById(R.id.rmb);
         show=(TextView) findViewById(R.id.showOut);
-        //获取sp里保存的数据
+        //获取sp里保存的数据..
         SharedPreferences sharedPreferences = getSharedPreferences("myrate", Activity.MODE_PRIVATE);
        SharedPreferences sp=PreferenceManager.getDefaultSharedPreferences(this);
         dollarRate= sharedPreferences.getFloat("dollar_rate",0.0f);
