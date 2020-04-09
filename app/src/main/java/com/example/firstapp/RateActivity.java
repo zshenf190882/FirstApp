@@ -180,7 +180,7 @@ public class RateActivity extends AppCompatActivity implements Runnable {
         //获取网络数据
         URL url = null;
         try {
-            url = new URL("https://www.usd-cny.com/icbc.htm");
+            url = new URL("http://www.usd-cny.com/icbc.htm");
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             InputStream in = http.getInputStream();
 
