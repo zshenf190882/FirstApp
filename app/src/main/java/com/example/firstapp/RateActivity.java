@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -17,13 +19,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RateActivity extends AppCompatActivity {
+public class RateActivity extends AppCompatActivity implements Runnable{
     EditText rmb;
     TextView show;
+    Handler handler;
+
     private final String TAG="Rate";
     private float dollarRate=0.1f;
     private float euroRate=0.2f;
     private float wonRate=0.3f;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,22 @@ public class RateActivity extends AppCompatActivity {
         Log.i(TAG,"OnCreate: sp dollarRate=" + dollarRate);
         Log.i(TAG,"OnCreate: sp euroRate=" + euroRate);
         Log.i(TAG,"OnCreate: sp wonRate=" + wonRate);
+
+        //开启子线程
+        Thread t=new Thread(this);
+        t.start();
+
+         handler=new Handler(){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                if(msg.what==5){
+                    String str =(String) msg.obj;
+                    Log.i(TAG,"handleMessage: getMessage msg ="+str);
+                    show.setText(str);
+                }
+                super.handleMessage(msg);
+            }
+        };
 
     }
 
@@ -130,5 +152,23 @@ public class RateActivity extends AppCompatActivity {
 
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void run() {
+        Log.i(TAG,"run: run()......");
+        for(int i=1;i<6;i++){
+            Log.i(TAG,"run: i="+i);
+            try{
+                Thread.sleep(2000);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+        //获取MAG对象，用于返回主线程
+        Message msg =handler.obtainMessage(5);
+        //msg.what = 5;
+        msg.obj="Hello from run()";
+        handler.sendMessage(msg);
     }
 }
