@@ -173,7 +173,12 @@ public class RateActivity extends AppCompatActivity implements Runnable {
         if (item.getItemId() == R.id.menu_set) {
            openConfig();
 
+        }else if(item.getItemId()==R.id.open_list){
+            //打开列表窗口
+            Intent list =new Intent(this,RateListActivity.class);
+            startActivity(list);
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -181,10 +186,8 @@ public class RateActivity extends AppCompatActivity implements Runnable {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == 2) {
 
-            Bundle bundle = null;
-            if (data != null) {
-                bundle = data.getExtras();
-            }
+            Bundle bundle = data.getExtras();
+
             dollarRate = bundle.getFloat("key_dollar", 0.1f);
             euroRate = bundle.getFloat("key_euro", 0.1f);
             wonRate = bundle.getFloat("key_won", 0.1f);
