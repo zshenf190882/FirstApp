@@ -175,7 +175,7 @@ public class RateActivity extends AppCompatActivity implements Runnable {
 
         }else if(item.getItemId()==R.id.open_list){
             //打开列表窗口
-            Intent list =new Intent(this,RateListActivity.class);
+            Intent list =new Intent(this,MyList2Activity.class);
             startActivity(list);
         }
 
@@ -254,49 +254,34 @@ public class RateActivity extends AppCompatActivity implements Runnable {
     private Bundle getFromBOC() {
         Bundle bundle = new Bundle();
         Document doc = null;
-
-
-            try {
-                doc = Jsoup.connect("http://www.boc.cn/sourcedb/whpj/").get();
-                //doc =Jsoup.parse(html);
-                Log.i(TAG, "run:" + doc.title());
-//            Elements newsHeadlines = doc.select("Nmp.itn b a");
-//            for (Element headline : newsHeadlines) {
-//                Log.i(TAG, "%\n\t%s" + headline.attr("title") + headline.absUrl("href"));
-//            }
-                Elements tables = doc.getElementsByTag("table");
-
-//            for (Element table:tables){
-//                Log.i(TAG, "run: table["+i+"] =" + table);
-//                i++;
-//            }
-                Element table2=tables.get(1);
-                //Log.i(TAG, "run: table6=" + table6);
-                //获取TD中的元素
-                Elements tds =table2.getElementsByTag("td");
-                for (int i = 0; i < tds.size(); i += 8) {
-                    Element td1 = tds.get(i);
-                    Element td2 = tds.get(i + 5);
-                    Log.i(TAG, "run: text=" + td1.text() + "==>" + td2.text());
-                    String str1 = td1.text();
-                    String val = td2.text();
-                    if ("美元".equals(str1)) {
-                        bundle.putFloat("dollar-rate", 100f / Float.parseFloat(val));
-                    } else if ("欧元".equals(str1)) {
-                        bundle.putFloat("euro-rate", 100f / Float.parseFloat(val));
-                    } else if ("韩国元".equals(str1)) {
-                        bundle.putFloat("won-rate", 100f / Float.parseFloat(val));
-                    }
+        try {
+            doc = Jsoup.connect("http://www.boc.cn/sourcedb/whpj/").get();
+            //doc =Jsoup.parse(html);
+            Log.i(TAG, "run:" + doc.title());
+            Elements tables = doc.getElementsByTag("table");
+            Element table2=tables.get(1);
+            Elements tds =table2.getElementsByTag("td");
+            for (int i = 0; i < tds.size(); i += 8) {
+                Element td1 = tds.get(i);
+                Element td2 = tds.get(i + 5);
+                Log.i(TAG, "run: text=" + td1.text() + "==>" + td2.text());
+                String str1 = td1.text();
+                String val = td2.text();
+                if ("美元".equals(str1)) {
+                    bundle.putFloat("dollar-rate", 100f / Float.parseFloat(val));
+                } else if ("欧元".equals(str1)) {
+                    bundle.putFloat("euro-rate", 100f / Float.parseFloat(val));
+                } else if ("韩国元".equals(str1)) {
+      bundle.putFloat("won-rate", 100f / Float.parseFloat(val));
                 }
-//            for(Element td :tds){
-//                Log.i(TAG,"run: td="+td);
-//                Log.i(TAG,"run: text="+td.text());
-//                Log.i(TAG,"run: html="+td.html());
-//            }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            return bundle;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return bundle;
+
         }
     private Bundle getFromUsdCny() {
         Bundle bundle = new Bundle();
