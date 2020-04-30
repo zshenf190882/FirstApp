@@ -17,15 +17,18 @@ public class MyList2Activity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initListView();
-        this.setListAdapter(listItemAdapter);
+       //this.setListAdapter(listItemAdapter);
+
+        MyAdapter myAdapter =new MyAdapter(this,R.layout.list_item,listItems);
+        this.setListAdapter(myAdapter);
 
     }
     private void initListView(){
         listItems =new ArrayList<HashMap<String, String>>();
         for(int i=0;i<10;i++){
             HashMap<String,String> map=new HashMap<String, String>();
-            map.put("ItemTitle","Rate:  "+i);
-            map.put("ItemDetail","detail"+i);
+            map.put("ItemTitle","Rate:  "+i);//标题文字
+            map.put("ItemDetail","detail"+i);//详细描述
             listItems.add(map);
         }
         //生成适配器的Item和动态数组对应的元素
