@@ -16,13 +16,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/itemTitle"
         android:text="@string/app_name"
-        android:textColor="@color/design_default_color_error"
+        android:textColor="@color/design_default_color_secondary"
         android:textSize="20sp"
         />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/itemDetail"
+        android:textColor="@color/design_default_color_error"
         android:gravity="end"
         android:text="@string/app_name"
         android:textSize="15sp"
