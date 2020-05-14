@@ -33,5 +33,7 @@
     <string name="btn_save_label" translatable="false">Save</string>
     <string name="menu_set_label" translatable="false" />
     <string name="label_open_list" translatable="false">OpenList</string>
+    <string name="key_hint">请输入关键字</string>
+    <string name="Button">查询</string>
 
 </resources>

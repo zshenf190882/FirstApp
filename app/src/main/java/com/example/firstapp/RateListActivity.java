@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -20,7 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RateListActivity extends ListActivity implements Runnable {
-    String data[]={"wait..."};
+
+    EditText key;
+    TextView show2;
     Handler handler;
     private final String TAG = "Rate";
     @Override
@@ -32,6 +36,7 @@ public class RateListActivity extends ListActivity implements Runnable {
         }
 
         //setContentView(R.layout.activity_rate_list);
+        String data[]={"wait..."};
         ListAdapter adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,data);
         setListAdapter(adapter);
         Thread t=new Thread(this);
@@ -73,11 +78,10 @@ public class RateListActivity extends ListActivity implements Runnable {
             for (int i = 0; i < tds.size(); i += 8) {
                 Element td1 = tds.get(i);
                 Element td2 = tds.get(i + 5);
-
                 String str1 = td1.text();
                 String val = td2.text();
-                Log.i(TAG, "run: text=" + td1.text() + "==>" + td2.text());
-                retList.add(str1 +"==>"+val);
+                Log.i(TAG, "run: text=" + td1.text() );
+                retList.add(str1+"==>"+val );
 //
         } }catch (IOException | InterruptedException e) {
             e.printStackTrace();
