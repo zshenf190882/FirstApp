@@ -1,6 +1,8 @@
 package com.example.firstapp;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,7 +28,7 @@ import java.util.List;
 public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
     Handler handler;
     private final String TAG = "mylist2";
-    private ArrayList<HashMap<String, String>> listItems;//存放文字，图片信息
+    private List<HashMap<String, String>> listItems;//存放文字，图片信息
     private SimpleAdapter listItemAdapter;//适配器
 
     @Override
@@ -44,8 +46,8 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
             @Override
             public void handleMessage(@NonNull Message msg) {
                 if (msg.what == 7) {
-                    List<HashMap<String,String>>list2 = (List<HashMap<String, String>>) msg.obj;
-                    listItemAdapter = new SimpleAdapter(MyList2Activity.this, list2,//listTtems数据源
+                    listItems= (List<HashMap<String, String>>) msg.obj;
+                    listItemAdapter = new SimpleAdapter(MyList2Activity.this, listItems,//listTtems数据源
                             R.layout.list_item,//ListItem的XML布局实现
                             new String[]{"ItemTitle", "ItemDetail"},
                             new int[]{R.id.itemTitle, R.id.itemDetail}
@@ -152,11 +154,26 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
     }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
         Log.i(TAG,"OnItemLongClick:长按列表项position"+position);
         //return false;//短按事件依然可以实现
+//删除操作
+//        listItems.remove(position);
+//        listItemAdapter.notifyDataSetChanged();//刷新
+        //构造对话框进行操作确认
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("提示").setMessage("请确认是否删除当前数据").setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.i(TAG,"onClick: 对话框事件处理");
+                listItems.remove(position);
+                listItemAdapter.notifyDataSetChanged();
 
-
+            }
+        })
+                .setNegativeButton("否",null);
+        builder.create().show();
+        Log.i(TAG,"OnItemLongClick:size="+listItems.size());
         return true;
 
     }
