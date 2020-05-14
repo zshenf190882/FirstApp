@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener {
+public class MyList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
     Handler handler;
     private final String TAG = "mylist2";
     private ArrayList<HashMap<String, String>> listItems;//存放文字，图片信息
@@ -63,6 +63,7 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
           //  }
         //});
         getListView().setOnItemClickListener(this);
+        getListView().setOnItemLongClickListener(this);
 
     }
 
@@ -147,6 +148,16 @@ public class MyList2Activity extends ListActivity implements Runnable, AdapterVi
         rateCalc.putExtra("rate",Float.parseFloat(detailStr));
         startActivity(rateCalc);
 
+
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.i(TAG,"OnItemLongClick:长按列表项position"+position);
+        //return false;//短按事件依然可以实现
+
+
+        return true;
 
     }
 }

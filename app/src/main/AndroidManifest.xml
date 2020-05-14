@@ -21,25 +21,25 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".RateCalActivity" />
+        <activity android:name=".RateCalActivity" android:theme="@style/Base.Theme.AppCompat.Dialog"/>
         <activity android:name=".MyAdapter" />
         <activity android:name=".MyList2Activity" />
 
         <activity android:name=".RateListActivity" />
-        <activity android:name=".ConfigActivity" />
+          <activity android:name=".ConfigActivity" />
         <activity android:name=".RateActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity android:name=".MyListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MyListActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <!-- <activity android:name=".MainActivity"> -->
         <!-- <intent-filter> -->
