@@ -53,7 +53,7 @@ public class RateListActivity extends ListActivity implements Runnable {
         setListAdapter(adapter);
         Thread t = new Thread(this);
         t.start();
-
+//
         handler = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
