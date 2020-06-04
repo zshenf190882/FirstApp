@@ -80,10 +80,11 @@ public class RateListActivity extends ListActivity implements Runnable {
             //如果相等，则不从网络中获取数据
             Log.i("run", "日期相等，从数据库中获取数据");
             RateManager manager = new RateManager(this);
-            for (RateItem item : manager.listAll()) {
-                retList.add(item.getCurName() + "-->" + item.getCurRate());
+                for(RateItem rateItem : manager.listAll()){
+                        retList.add(rateItem.getCurName() + "-->" + rateItem. getCurRate());
+                        retList.add("hh");
 
-                Log.i(TAG, "onOptionsItemSelected:取出数据" + item.getCurRate());
+                Log.i(TAG, "onOptionsItemSelected:取出数据" + rateItem.getCurRate());
             }
             retList.add("sdsf");
 
